@@ -1,0 +1,19 @@
+<div
+  class="row row-cols-1 row-cols-md-3 g-3"
+  style=" margin: 20px"
+>
+
+
+<app-cards></app-cards>
+<app-cards
+*ngFor="let item of rooms"
+[reservada] ="item.reservada"
+[id] = "item.id"
+[romsize]="item.cantdepersonas"
+[Price]="item.precio"
+[image]="item.image"
+></app-cards>
+
+
+</div>
+

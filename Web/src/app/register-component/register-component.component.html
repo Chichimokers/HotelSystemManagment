@@ -1,0 +1,145 @@
+<div *ngIf="dialogRef ; else elsenomodal">
+  <div class="modal-overlay">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="formulario">
+    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+
+    <div class="modal-body">
+      <div>
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            formControlName="username"
+            class="form-control"
+            id="username"
+            placeholder="Type your name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="password"
+            placeholder="Type your password"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="mail" class="form-label">Mail</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="mail"
+            id="mail"
+            placeholder="Introduce your mail"
+          />
+        </div>
+
+
+
+        <div class="mb-3">
+
+        </div>
+
+      </div>
+
+
+      <div class="mb-3">
+        <div *ngIf="error != null" class="alert alert-danger">{{ error }}</div>
+      </div>
+      <div class="mb-3">
+        <div *ngIf="correct != null" class="alert alert-info">{{ correct }}</div>
+      </div>
+
+
+      <div class="modal-footer">
+
+        <button type="submit" style="margin-right: 10px;"  class="btn-primary">Register</button>
+
+        <button (click)="close()" style="margin-right: 10px;" class="btn btn-primary">Close</button>
+
+      </div>
+    </div>
+  </form>
+
+  </div >
+
+</div>
+
+
+<ng-template #elsenomodal>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="formulario">
+    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+
+    <div class="modal-body">
+      <div>
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            formControlName="username"
+            class="form-control"
+            id="username"
+            placeholder="Type your name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="password"
+            placeholder="Type your password"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="mail" class="form-label">Mail</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="mail"
+            id="mail"
+            placeholder="Introduce your mail"
+          />
+        </div>
+
+
+
+        <div class="mb-3">
+
+        </div>
+
+      </div>
+
+
+      <div class="mb-3">
+        <div *ngIf="error != null" class="alert alert-danger">{{ error }}</div>
+      </div>
+      <div class="mb-3">
+        <div *ngIf="correct != null" class="alert alert-info">{{ correct }}</div>
+      </div>
+
+
+      <div class="modal-footer">
+
+        <button type="submit" style="margin-right: 10px;"  class="btn-primary">Register</button>
+
+        <button (click)="close()" style="margin-right: 10px;" class="btn btn-primary">Close</button>
+
+      </div>
+    </div>
+  </form>
+
+
+</ng-template>
+
+
+

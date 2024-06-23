@@ -1,0 +1,65 @@
+ .navbar{
+
+
+  background-color: #1c1f21;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efecto de sombra para dar profundidad */
+  border-bottom: 2px solid #000000; /* Borde inferior para definir el final de la barra */
+
+ }
+
+
+
+
+ .icon-container {
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 50px; /* Ajusta el tamaño del círculo según sea necesario */
+   height: 50px;
+   border-radius: 50%; /* Hace que las esquinas sean redondas, creando un círculo */
+   border: 2px solid black;
+   margin: 5px;
+ /* Establece el color y grosor del borde */
+ }
+
+ .icon-container i {
+   font-size: 30px;
+   color: white;
+   line-height: 50px; /* Alinea verticalmente el ícono dentro del círculo */
+ }
+
+ .nava{
+  /* Aplica el desenfoque aquí */
+ /* Aplica el desenfoque al fondo */
+   padding: 10px 0; /* Agrega algo de espacio alrededor del texto */
+ }
+ a:hover {
+  font-size: 30px;
+
+  filter: saturate(100%);
+  color: var(--link-color);
+}
+
+ a{
+   font-family: monospace;;
+   opacity: 100%;
+   font-size: 15px;
+   color: var(--link-color);
+ }
+
+.icon-container {
+  display: flex;
+  background-color:#1c1f21;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--background-color-dark);
+  margin: 5px;
+}
+
+.navbar {
+  flex-grow: 1; /* Permite que el navbar ocupe todo el espacio restante */
+}

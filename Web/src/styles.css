@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Colores primarios de Ubuntu */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+
+
+body{
+  color-scheme: dark;
+  margin: 0;
+
+
+}
+/* Colores de GitHub */
+:root {
+  /* Tema claro */
+  --background-color: #fff;
+  --text-color: #121416d8;
+  --link-color: #543fd7;
+
+  /* Tema oscuro */
+  --background-color-dark: #212a2e;
+  --text-color-dark: #F7F8F8;
+  --link-color-dark: #828fff;
+}
+
+body {
+  background: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  text-decoration: underline;
+  filter: brightness(80%);
+}
+.dark {
+  --background-color: var(--background-color-dark);
+  --text-color: var(--text-color-dark);
+  --link-color: var(--link-color-dark);
+}
+
+body.dark {
+  background: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+a.dark {
+  color: var(--link-color-dark);
+}
+
+a.dark:hover {
+  text-decoration: underline;
+  filter: brightness(80%);
+}

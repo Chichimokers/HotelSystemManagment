@@ -1,0 +1,49 @@
+
+
+    <form [formGroup]="ReserveForm" (ngSubmit)="onSubmit()" class="formulario">
+
+      <h5 class="modal-title" id="exampleModalLabel">Reserve the room</h5>
+      <div class="modal-body">
+
+        <div class="Info">
+          <h5>RomSize : {{numero_huspedes}} </h5>
+          <h5>Price : {{preciototal}} $USD</h5>
+        </div>
+
+        <div>
+          <div class="mb-3">
+            <label for="fechas" class="form-label">Out DateTime</label>
+            <input
+              type="datetime"
+              formControlName="fechas"
+              class="form-control"
+              id="fechas"
+              placeholder="Select your datetime  00/00/0000"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="fechae" class="form-label">Check In DateTime</label>
+            <input
+              type="datetime"
+              class="form-control"
+              formControlName="fechae"
+              id="fechae"
+              placeholder="Select the datetime 00/00/0000"
+            />
+          </div>
+          <div class="mb-3"></div>
+        </div>
+
+        <div class="mb-3">
+          <div *ngIf="error != null" class="alert alert-danger">{{ error }}</div>
+        </div>
+        <div class="mb-3">
+          <div *ngIf="correct != null" class="alert alert-info">{{ correct }}</div>
+        </div>
+
+        <div class="modal-footer">
+          <button style="margin-right: 10px;" class="btn btn-primary">Reserve</button>
+        </div>
+      </div>
+    </form>
+

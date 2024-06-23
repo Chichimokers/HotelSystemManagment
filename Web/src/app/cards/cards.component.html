@@ -1,0 +1,35 @@
+<div id='{{id}}'class="card carta">
+
+  <div class="card-title">Room {{romsize}} peoples </div>
+
+  <img class="card-img"*ngIf="image != null ; else elseimage" src="{{image}}">
+
+  <ng-template #elseimage>
+    <img class="card-img" src="/assets/images.jpg">
+  </ng-template>
+
+
+  <div class="card-text">{{body}}</div>
+
+  <div class="card-text">Room size :{{romsize}}</div>
+
+  <div class="card-text">Price :{{Price}} USD</div>
+
+  <div class="card-text" style="color: red;" *ngIf="reservada == true; else elseBlock">
+
+  It is reserved
+
+  </div>
+
+<ng-template #elseBlock>
+
+<!-- Botón para abrir el modal -->
+<button class="btn-success" c olor="primary" (click)="openModal()">Reserve</button>
+
+</ng-template>
+
+
+
+
+</div>
+
