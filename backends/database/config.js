@@ -58,6 +58,22 @@ class Database
         );
 
     };
+    AdministradorQuery  = () => {
+
+      return new CrudModel(
+        "gerente",
+        this.databaseconnection
+        );
+
+    };
+    clientesquey  = () => {
+
+      return new CrudModel(
+        "clientes",
+        this.databaseconnection
+        );
+
+    };
      ReprotesQuery   = () => {
 
       return new CrudModel(

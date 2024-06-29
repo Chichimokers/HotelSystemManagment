@@ -5,7 +5,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiServiceService  implements OnInit{
+export class AdminApi  implements OnInit{
 
   private apiUrl = 'http://localhost:8080'; // Reemplaza YOUR_API_KEY con tu clave de API real
   private headers = new HttpHeaders()
@@ -23,14 +23,22 @@ export class ApiServiceService  implements OnInit{
     return localStorage.getItem("token")
 
   }
-
   ngOnInit():void {
 
   }
+  getUsers(): Observable<any> {
+
+    return this.http.get(this.apiUrl+"/db/user");
+
+  }
+
   getMyReserves(): Observable<any> {
 
     return this.http.get(this.apiUrl+"/user/getreservas");
 
+  }
+  getreservas(){
+    return this.http.get(this.apiUrl+"/db/reservas");
   }
   GetRooms(): Observable<any> {
     return this.http.get(this.apiUrl+"/user/gethabitaciones");

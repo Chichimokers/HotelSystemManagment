@@ -79,9 +79,28 @@ const authautenticationcontroller = async (database =  Database.prototype  , req
         res.statusCode =400;
         return res.json({msg: "Error password is not valid"}) 
        }
+
        //Generating Token
-    
-       const token = await Generate(usuario[0].id);
+       var token =""
+       const verificliente = await database.clientesquey().FilterByField("id_user",usuario[0].id)
+       const gerenteverifi = await database.AdministradorQuery().FilterByField("id_user",usuario[0].id)
+       if(verificliente.lenght != 0){
+
+         token = await Generate({uid:usuario[0].id ,isuser:true});
+
+       }
+       if(gerenteverifi != 0){
+
+        
+        token = await Generate({uid:usuario[0].id ,isgerente:true});
+       }
+
+       if(verificliente ==0  && gerenteverifi ==0){
+        
+        res.statusCode =400;
+        return res.json({msg: "this username is not valid"}) 
+
+       }
 
        usuario[0].conectado = true;
      
@@ -141,7 +160,9 @@ const gerentenauth = async(database =  Database.prototype,req =request,res=respo
     }
 
     const isgerente = await database.FindGerenteByIdEmpleado(usuario[0].id)
+
     console.log(isgerente)
+
     if(isgerente == undefined){
         res.statusCode= 400;
         return res.json({msg : "This username is not gerent"})
@@ -197,13 +218,17 @@ const singupautenticationcontroller = async (database = Database.prototype,req =
 
     //Save database
     const respuesta = await database.UserQuery().Add([nombre,UsuarioARegistrarse.password,correo],["username","password","mail"])
- 
-        if(!respuesta){
+    const usuarioregsitrado = await database.UserQuery().FilterByField("username",nombre);
+    const addclientes = await database.clientesquey().Add([usuarioregsitrado[0].id],["id_user"])
+
+    if(!respuesta){
             res.statusCode = 404;
             res.json({msg:"Error Creating"})
         }
             res.statusCode = 200;
-            res.json({msg:"sucefully created"})
+            res.json({msg:"sucefully created",user:respuesta})
+
+    
         
 
 }

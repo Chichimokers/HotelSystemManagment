@@ -3,7 +3,7 @@
   --text-color-dark: #F7F8F8;
   --link-color-dark: #828fff;
 }
-  .card-container {
+ .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content:center ;

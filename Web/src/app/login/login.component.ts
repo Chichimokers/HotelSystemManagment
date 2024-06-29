@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit{
 
 
   error: string | null = null;
-
   correct: string | null = null;
 
   loginForm = new FormGroup({
@@ -73,7 +72,14 @@ export class LoginComponent implements OnInit{
           localStorage.setItem(llaves[index],String( valores[index]))
 
          }
-         this.router.navigate(['/home/default']);
+         console.log(this.router.url)
+         if(this.router.url == "/admin/login"){
+          this.router.navigate(['admin/']);
+         }else{
+          this.router.navigate(['/home/default']);
+         }
+
+
           if(this.dialogRef){
             this.close();
 

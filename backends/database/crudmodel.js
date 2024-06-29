@@ -135,7 +135,10 @@ class CrudModel {
           if (err) {
             reject(err);
           } else {
-            resolve(true);
+           
+              resolve(true)
+            
+        
           }
         });
       });

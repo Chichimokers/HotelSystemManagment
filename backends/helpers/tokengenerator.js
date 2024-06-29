@@ -1,6 +1,6 @@
 const JWT = require('jsonwebtoken')
 
-const Generate =  ( uid) =>{
+const Generate =( uid) =>{
 
     return new Promise((resolve ,reject)=>{
             const payload = {uid}
@@ -29,14 +29,30 @@ const extractPayload =(token)=>{
               console.error('Error al verificar el token:', err);
               reject(err)
             }
-            resolve(decoded.uid)
+            resolve(decoded.uid.uid)
           })
 })
+
+
  
 }
 
+const extractallPayload =(token)=>{
+
+    return new Promise((resolve,reject)=>{
+
+        JWT.verify(token, process.env.secretJWT, (err, decoded) => {
+            if (err) {
+              console.error('Error al verificar el token:', err);
+              reject(err)
+            }
+            resolve(decoded)
+          })
+})
+}
 
 module.exports = {
      Generate,
-     extractPayload
+     extractPayload,
+     extractallPayload
 }

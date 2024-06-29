@@ -1,39 +1,50 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { ApiServiceService } from './api-service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {ApiServiceService } from './api-service.service'
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+
+export class AdminGuard implements CanActivate {
+
   constructor(private authService: ApiServiceService, private router: Router, private jwtHelper: JwtHelperService) {}
 
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-
-
+    // Verificar si el usuario está autenticado
     if (this.authService.isLoggedIn()) {
 
-      const token = this.authService.getoken();
+      let token: any;
+
+      token =  this.authService.getoken();
 
       // Verificar si el token es válido
       if (!this.jwtHelper.isTokenExpired(token)) {
 
-        return true;
+        const payload = this.jwtHelper.decodeToken(token);
+
+        if (payload.uid.isgerente) {
+
+          return true;
+        } else {
+
+          this.router.navigate(['home/default']);
+          return false;
+        }
 
       } else {
 
         localStorage.clear();
-        this.router.navigate(['home/login']);
+        this.router.navigate(['admin/login']);
         return false;
       }
-
     } else {
 
-      this.router.navigate(['/home'], { queryParams: { returnUrl: state.url } });
+      this.router.navigate(['admin/login']);
       return false;
     }
   }

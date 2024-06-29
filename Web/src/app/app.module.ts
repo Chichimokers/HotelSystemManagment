@@ -18,7 +18,14 @@ import { RegisterComponentComponent } from './register-component/register-compon
 import { ReserveComponent } from './reserve/reserve.component';
 import { AuthInterceptor } from './services/auth.httpinterceptor';
 import { ReservationCardComponent } from './reservation-card/reservation-card.component';
-
+import { AdminScreenComponent } from './admin-screen/admin-screen.component';
+import { AdminComponent } from './admin/admin.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { EditReservationsComponent } from './edit-reservations/edit-reservations.component';
+import { BalanceComponent } from './balance/balance.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +36,16 @@ import { ReservationCardComponent } from './reservation-card/reservation-card.co
     HomeScreenComponent,
     RegisterComponentComponent,
     ReserveComponent,
-    ReservationCardComponent
+    ReservationCardComponent,
+    AdminScreenComponent,
+    AdminComponent,
+    SidebarComponent,
+    EditReservationsComponent,
+    BalanceComponent
   ],
 
   imports: [
+    NgxChartsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
@@ -42,12 +55,23 @@ import { ReservationCardComponent } from './reservation-card/reservation-card.co
   ],
   providers: [
     ModalService,
+    JwtHelperService,
     ApiServiceService,
      {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }],
+    },
+
+      {
+        provide: JWT_OPTIONS,
+         useValue: JWT_OPTIONS
+
+        }
+
+
+
+  ],
   bootstrap: [AppComponent]
 
 })

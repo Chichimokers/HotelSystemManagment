@@ -1,9 +1,9 @@
 const JWT = require('jsonwebtoken')
 
-const GenearteGeren =  ( uid = ' ') =>{
+const GenearteGeren =  (uid) =>{
 
     return new Promise((resolve ,reject)=>{
-            const payload = {uid}
+            const payload = uid
             JWT.sign(
             payload,
             process.env.secretGEREN,

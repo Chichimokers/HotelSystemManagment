@@ -16,7 +16,7 @@ router.get(`/getreservas`, async (req, res) => {
       const token = req.header("Authorizathion");
     
       const id = await extractPayload(token)
-
+   
       const items = await  db.ReservasQuery().FilterByField("id_cliente",id);
 
       res.json(items);
