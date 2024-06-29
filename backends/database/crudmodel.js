@@ -1,3 +1,5 @@
+const { Query } = require("mongoose");
+
 class CrudModel {
  
     constructor(tableName,databaseconnection) {
@@ -90,13 +92,15 @@ class CrudModel {
     async FilterByField(fieldName, value) {
       return new Promise(async (resolve, reject) => {
 
-        const query = `SELECT * FROM public.${this.tableName} WHERE ${fieldName} ILIKE $1`;
-      
+        const query = `SELECT * FROM public.${this.tableName} WHERE CAST(${fieldName} AS TEXT) ILIKE $1`;
+        
         try {
+          console.log(query)
           const result = await this.databaseconnection.query(query, [`%${value}%`]);
       
           resolve(result.rows);
         } catch (err) {
+ 
           reject(err);
         }
       });

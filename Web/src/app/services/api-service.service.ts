@@ -12,11 +12,25 @@ export class ApiServiceService  implements OnInit{
   .set('Authorizathion', String(localStorage.getItem("token"))) // Header por defecto para JSON;
 
   constructor(private http: HttpClient) { }
+  isLoggedIn() : boolean{
+    if(localStorage.getItem("token")){
+      return true;
+    }
+    return false;
+  }
+  getoken(){
+
+    return localStorage.getItem("token")
+  }
 
   ngOnInit():void {
 
   }
+  getMyReserves(): Observable<any> {
 
+    return this.http.get(this.apiUrl+"/user/getreservas");
+
+  }
   GetRooms(): Observable<any> {
     return this.http.get(this.apiUrl+"/user/gethabitaciones");
   }
@@ -33,6 +47,7 @@ export class ApiServiceService  implements OnInit{
   id_habitacion:string| null| undefined
 
   ): Observable<any>{
+
     return this.http.post(this.apiUrl+"/user/reservar",
     {  fecha_entrada : fecha_entrada,
       fecha_salida:fecha_salida,
@@ -41,7 +56,6 @@ export class ApiServiceService  implements OnInit{
       preciototal:preciototal ,
       cantdiasestadia:cantdiasestadia,
       id_habitacion:id_habitacion},
-      {headers:this.headers}
 
 
       ).pipe(

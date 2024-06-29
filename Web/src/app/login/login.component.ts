@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, Inject, Input, OnInit, Optional, SkipSelf } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ModalService } from '../services/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit{
   });
 
   constructor(
+    private router: Router,
     public servicio : ApiServiceService ,
     @Optional() @SkipSelf()  public dialogRef: MatDialogRef<LoginComponent>,
     @Optional() @SkipSelf()  @Inject(MAT_DIALOG_DATA) public data: any,
@@ -71,7 +73,7 @@ export class LoginComponent implements OnInit{
           localStorage.setItem(llaves[index],String( valores[index]))
 
          }
-
+         this.router.navigate(['/home/default']);
           if(this.dialogRef){
             this.close();
 

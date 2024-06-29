@@ -80,8 +80,8 @@ const authautenticationcontroller = async (database =  Database.prototype  , req
         return res.json({msg: "Error password is not valid"}) 
        }
        //Generating Token
-
-       const token = await Generate(usuario.id);
+    
+       const token = await Generate(usuario[0].id);
 
        usuario[0].conectado = true;
      

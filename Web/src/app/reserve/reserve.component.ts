@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { ApiServiceService } from '../services/api-service.service';
+
 
 @Component({
   selector: 'app-reserve',
@@ -18,6 +20,7 @@ export class ReserveComponent implements OnInit{
   cantdiasestadia : string|null|undefined  ="10";
   id_cliente : string|null |undefined = "";
   Usuario  = localStorage.getItem("id")
+  id:string |null = null;
 
   ReserveForm = new FormGroup({
     fechae: new FormControl(null),
@@ -26,23 +29,35 @@ export class ReserveComponent implements OnInit{
 
  token:string |null = localStorage.getItem("token")
 
+ myreserves :any;
+ constructor(
 
- constructor(private router: Router,private route: ActivatedRoute, private service : ApiServiceService){
+  private router: Router,
+  private route: ActivatedRoute,
+  private service : ApiServiceService){
+  this.id = this.route.snapshot.paramMap.get('id');
 
-  const id = this.route.snapshot.paramMap.get('id');
 
-  this.service.GetRoomsById(id).subscribe(detalles => {
-  this.id_habitacion = id?.toString();
-  this.numero_huspedes = detalles.cantdepersonas;
-  this.preciototal = detalles.precio;
-  this.id_cliente =this.Usuario;
-  });
  }
- ngOnInit():void{
-  if(!this.token){
-    this.router.navigate(['/home/login']);
+
+ async ngOnInit(){
+  if(this.id ==null){
+
+    this.service.getMyReserves().subscribe(data => {
+      this.myreserves = data;
+    });
+    
+  }else{
+    this.service.GetRoomsById(this.id).subscribe(detalles => {
+      this.id_habitacion = this.id?.toString();
+      this.numero_huspedes = detalles.cantdepersonas;
+      this.preciototal = detalles.precio;
+      this.id_cliente =this.Usuario;
+      });
   }
+
 }
+
 onSubmit(){
   this.service.Reserve(
     String(this.ReserveForm.get("fechae")?.value),

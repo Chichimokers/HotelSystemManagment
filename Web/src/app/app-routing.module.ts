@@ -7,16 +7,19 @@ import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { RegisterComponentComponent } from './register-component/register-component.component';
 import { ReserveComponent } from './reserve/reserve.component';
+import { AuthGuard } from './services/auth.guard.service';
 
 const routes: Routes = [
 { path: '', redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeScreenComponent  ,
+
 children: [
   { path: '', redirectTo: 'default', pathMatch: 'full' },
   { path: 'default', component: HomeComponent },
   { path: 'login', component: LoginComponent},// Un componente ficticio para demostrar
   { path: 'register', component: RegisterComponentComponent},
-  {path:'reserve/:id',component:ReserveComponent}
+  {path:'reserve/:id',component:ReserveComponent,canActivate : [AuthGuard]},
+  {path:'reserve',component:ReserveComponent, canActivate : [AuthGuard]}
 ]},
 
 ];

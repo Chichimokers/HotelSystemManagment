@@ -5,10 +5,29 @@ const { default: Database, DBGlobalInstance, db } = require('../../database/conf
 const { CrudModel } = require('../../database/crudmodel');
 const { valiJWT } = require('../../middlewares/validar-JWT');
 const { validation } = require('../../middlewares/validation');
-
+const {extractPayload} = require('../../helpers/tokengenerator')
 const router = Router();
   
 function Rutas()  { 
+
+router.get(`/getreservas`, async (req, res) => {
+    try {
+
+      const token = req.header("Authorizathion");
+    
+      const id = await extractPayload(token)
+
+      const items = await  db.ReservasQuery().FilterByField("id_cliente",id);
+
+      res.json(items);
+
+    } catch (error) {
+
+      res.status(500).json({ message: error.message });
+
+    }
+
+});
 
 router.get(`/gethabitaciones`, async (req, res) => {
         try {

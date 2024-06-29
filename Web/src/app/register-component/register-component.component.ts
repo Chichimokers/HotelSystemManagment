@@ -46,12 +46,11 @@ async sleep(ms:number) {
 
       async (response) => {
         if (response && response.msg) {
-         this.correct= "Succefully Register";
+         this.correct= "Succefully Register ";
          await this.sleep(2000)
          if(this.dialogRef){
           this.dialogRef.close()
          }
-
         }
       },
       (error)=>{

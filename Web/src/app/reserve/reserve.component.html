@@ -1,4 +1,24 @@
 
+<div *ngIf="id == null;else a">
+  <div class="card-container">
+
+
+  <div *ngFor="let item of myreserves">
+    <app-reservation-card
+     [id]="item.id_habitacion"
+     [Price]="item.preciototal"
+     [entrada]="item.fecha_entrada.toString()"
+     [salida]="item.fecha_salida.toString()"
+     ></app-reservation-card>
+
+  </div>
+
+</div>
+
+
+</div>
+
+<ng-template #a>
 
     <form [formGroup]="ReserveForm" (ngSubmit)="onSubmit()" class="formulario">
 
@@ -47,3 +67,5 @@
       </div>
     </form>
 
+
+  </ng-template>
