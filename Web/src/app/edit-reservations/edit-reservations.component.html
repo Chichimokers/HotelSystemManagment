@@ -1,1 +1,34 @@
-<p>edit-reservations works!</p>
+<div class="row">
+
+
+
+    <div class="card bg-dark text-white" *ngFor="let item of reservations">
+
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-3">
+            <h5 class="card-title">Username: {{item.preciototal}}</h5>
+          </div>
+
+
+          <div class="col-3">
+            <h5 class="card-title">CheckIn: {{item.fecha_entrada}}</h5>
+          </div>
+          <div class="col-3">
+            <h5 class="card-title">OutDate: {{item.fecha_salida}}</h5>
+          </div>
+
+          <div class="col-3">
+            <h5 class="card-title">Price: {{item.preciototal}} USD</h5>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+  </div>
+
+</div>

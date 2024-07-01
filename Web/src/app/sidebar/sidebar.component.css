@@ -11,7 +11,9 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-right: 2px solid #000000;
 }
-
+.mover{
+  padding: 10px;
+}
 .sidebar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;

@@ -6,7 +6,6 @@
         <div class="d-flex align-items-center">
 
           <i class="bi bi-house-fill mr-3 display-4 separar"></i>
-
           <div>
             <h5 class="card-title">Rooms</h5>
             <p class="card-text display-4">{{habitaciones.length-1}}</p>
@@ -44,9 +43,9 @@
     </div>
   </div>
 
-  <ngx-charts-bar-vertical
+  <ngx-charts-bar-vertical style="font-size: 30px; color: white;"
 
-  [view]="[640, 400]"
+  [view]="[1024, 400]"
   [results]="data"
   [gradient]="gradient"
   [xAxis]="showXAxis"
