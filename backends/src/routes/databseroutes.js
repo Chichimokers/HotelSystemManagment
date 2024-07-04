@@ -46,6 +46,7 @@ const CrudRoutes = (routename, databaseQueryHandler = CrudModel.prototype,middle
     router.patch(`/${routename}/:id`,middlewares, async (req, res) => {
       try {
         const updatedItem = await databaseQueryHandler.UpdateField(req.params.id, req.body.updatefield,req.body.value);
+        
         if (!updatedItem) {
           return res.status(404).json({ message: 'Item not found' });
         }

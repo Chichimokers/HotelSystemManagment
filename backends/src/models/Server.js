@@ -36,7 +36,7 @@ class Server {
    
      this.app.use(cors({
         origin: 'http://localhost:4200', // Replace with your Angular app's URL
-        methods: 'GET, POST, PUT, DELETE, OPTIONS',
+        methods: 'GET, POST, PUT, DELETE, OPTIONS,PATCH',
  
       }));
        this.app.use(express.json())

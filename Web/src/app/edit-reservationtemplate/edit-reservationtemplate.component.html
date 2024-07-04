@@ -1,0 +1,34 @@
+<div class="container">
+  <h2 class="text-white">Edit Reservation</h2>
+  <form (ngSubmit)="editar()">
+    <div class="form-group">
+      <label for="fecha_entrada" class="text-white">Date Checkin:</label>
+      <input type="datetime" class="form-control bg-dark text-white" id="fecha_entrada" [(ngModel)]="reservation.fecha_entrada" name="fecha_entrada">
+    </div>
+    <div class="form-group">
+      <label for="fecha_salida" class="text-white">Date CheckOut:</label>
+      <input type="datetime" class="form-control bg-dark text-white" id="fecha_salida" [(ngModel)]="reservation.fecha_salida" name="fecha_salida">
+    </div>
+    <div class="form-group">
+      <label for="numero_huspedes" class="text-white">Number of Peoples:</label>
+      <input type="number" class="form-control bg-dark text-white" id="numero_huspedes" [(ngModel)]="reservation.numero_huspedes" name="numero_huspedes">
+    </div>
+    <div class="form-group">
+      <label for="id_cliente" class="text-white">Client ID:</label>
+      <input type="number" class="form-control bg-dark text-white" id="id_cliente" [(ngModel)]="reservation.id_cliente" name="id_cliente">
+    </div>
+    <div class="form-group">
+      <label for="preciototal" class="text-white">Total Price:</label>
+      <input type="number" class="form-control bg-dark text-white" id="preciototal" [(ngModel)]="reservation.preciototal" name="preciototal">
+    </div>
+    <div class="form-group">
+      <label for="cantdiasestadia" class="text-white">Days:</label>
+      <input type="number" class="form-control bg-dark text-white" id="cantdiasestadia" [(ngModel)]="reservation.cantdiasestadia" name="cantdiasestadia">
+    </div>
+    <div class="form-group">
+      <label for="id_habitacion" class="text-white">Room ID:</label>
+      <input type="number" class="form-control bg-dark text-white" id="id_habitacion" [(ngModel)]="reservation.id_habitacion" name="id_habitacion">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>

@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { ModalService } from './services/modal.service';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -26,6 +26,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { EditReservationsComponent } from './edit-reservations/edit-reservations.component';
 import { BalanceComponent } from './balance/balance.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { EditReservationtemplateComponent } from './edit-reservationtemplate/edit-reservationtemplate.component';
+import { ActivatedRoute } from '@angular/router';
+import { UsereditComponent } from './useredit/useredit.component';
+import { UsersEdittemplateComponent } from './users-edittemplate/users-edittemplate.component';
+import { RomsEditComponent } from './roms-edit/roms-edit.component';
+import { RommsedittemplateComponent } from './rommsedittemplate/rommsedittemplate.component';
+import { AddromtemplateComponent } from './addromtemplate/addromtemplate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +48,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AdminComponent,
     SidebarComponent,
     EditReservationsComponent,
-    BalanceComponent
+    BalanceComponent,
+    EditReservationtemplateComponent,
+    UsereditComponent,
+    UsersEdittemplateComponent,
+    RomsEditComponent,
+    RommsedittemplateComponent,
+    AddromtemplateComponent
   ],
 
   imports: [
@@ -52,8 +65,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ReactiveFormsModule,
     MatDialogModule,
     HttpClientModule,
+    FormsModule,
+
   ],
   providers: [
+
+
     ModalService,
     JwtHelperService,
     ApiServiceService,

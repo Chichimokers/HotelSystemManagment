@@ -1,0 +1,15 @@
+<div class="container">
+  <h2 class="text-white">Edit Rooms</h2>
+  <form (ngSubmit)="Crear()">
+    <div class="form-group">
+      <label for="fecha_entrada" class="text-white">Cant Peoples:</label>
+      <input type="text" class="form-control bg-dark text-white" id="fecha_entrada" [(ngModel)]="rooms.cantdepersonas" name="fecha_entrada">
+    </div>
+    <div class="form-group">
+      <label for="fecha_salida" class="text-white">Price:</label>
+      <input type="text" class="form-control bg-dark text-white" id="fecha_salida" [(ngModel)]="rooms.precio" name="fecha_salida">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>

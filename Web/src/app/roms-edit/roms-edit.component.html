@@ -1,0 +1,81 @@
+
+<button (click)="addrom()"class="addbuton">Add Room</button>
+
+<div class="row">
+  <div *ngFor="let item of rooms">
+
+  <div class="card" *ngIf="item.reservada else elseblock" style="background-color: #4CAF50; color: black; ">
+
+    <div class="card-body" >
+
+      <div class="row">
+
+        <div class="col-2">
+          <h5 class="card-title">Price: {{item.precio}} USD</h5>
+        </div>
+        <div class="col-2">
+          <h5 class="card-title">CantPeoples : {{item.cantdepersonas}}</h5>
+        </div>
+
+        <div class="col-2">
+          <h5 class="card-title">Reserve: {{item.reservada}} </h5>
+        </div>
+
+        <div class="col-2 botones d-flex">
+
+          <button (click)="DeleteRom(item.id)"  class="bg-danger"> Delete</button>
+
+          <button (click)="EditRoom(item.id)"class="bg-info"> Edit</button>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+  <ng-template  #elseblock >
+
+  <div class="card"style="background-color:  #E53935; color: black; ">
+
+    <div class="card-body" >
+
+      <div class="row">
+
+        <div class="col-2">
+          <h5 class="card-title">Price: {{item.precio}} USD</h5>
+        </div>
+        <div class="col-2">
+          <h5 class="card-title">CantPeoples : {{item.cantdepersonas}}</h5>
+        </div>
+
+        <div class="col-2">
+          <h5 class="card-title">Reserve: {{item.reservada}} </h5>
+        </div>
+
+        <div class="col-2 botones d-flex">
+
+          <button (click)="DeleteRom(item.id)"  class="bg-danger"> Delete</button>
+
+          <button (click)="EditRoom(item.id)"class="bg-info"> Edit</button>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  </ng-template>
+
+
+</div>
+
+
+
+</div>
+
+

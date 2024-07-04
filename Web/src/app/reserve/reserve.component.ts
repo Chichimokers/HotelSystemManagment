@@ -46,7 +46,7 @@ export class ReserveComponent implements OnInit{
     this.service.getMyReserves().subscribe(data => {
       this.myreserves = data;
     });
-    
+
   }else{
     this.service.GetRoomsById(this.id).subscribe(detalles => {
       this.id_habitacion = this.id?.toString();

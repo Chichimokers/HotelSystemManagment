@@ -1,7 +1,23 @@
 .contenedor {
   background-color: #1c1f21;
 }
+.addbuton:hover{
+  background-color:whitesmoke;
+  color: black;
+}
+.addbuton{
+  background-color: #1c1f21;
+  color: var(--text-color-dark);
+  border-style:none;
+  margin:10px;
+  border-radius:5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #000000;
 
+}
+.card{
+  margin: 7px;
+}
 .container {
   padding: 2px;
 }
@@ -24,6 +40,7 @@
 
 
 .botones button {
+
   justify-content:center;
   height: 40px;
   padding: 10px;

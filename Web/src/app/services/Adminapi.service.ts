@@ -18,6 +18,7 @@ export class AdminApi  implements OnInit{
     }
     return false;
   }
+
   getoken(){
 
     return localStorage.getItem("token")
@@ -26,20 +27,105 @@ export class AdminApi  implements OnInit{
   ngOnInit():void {
 
   }
+  //rutas administrativas
+
+  DeleteRom(id:string){
+    return this.http.delete(this.apiUrl+"/db/habitaciones/"+id);
+
+
+
+  }
   getUsers(): Observable<any> {
 
     return this.http.get(this.apiUrl+"/db/user");
 
   }
+  UpdateUser(id:string,newvalue:string,field:string): Observable<any> {
 
+    return this.http.patch(this.apiUrl+"/db/user/"+id,{
+      updatefield:field,
+      value:newvalue,
+    });
+
+  }
+  AddRom(body:any): Observable<any> {
+
+    return this.http.post(this.apiUrl+"/db/habitaciones/",body);
+
+  }
+  UpdateRoom(id:string,newvalue:string,field:string): Observable<any> {
+
+    return this.http.patch(this.apiUrl+"/db/habitaciones/"+id,{
+      updatefield:field,
+      value:newvalue,
+    });
+
+  }
+  UdpateRerservaion(id:string,newvalue:string,field:string): Observable<any> {
+
+    return this.http.patch(this.apiUrl+"/db/reservas/"+id,{
+      updatefield:field,
+      value:newvalue,
+    });
+
+  }
+  deleteUser(id:string){
+    return this.http.delete(this.apiUrl+"/db/user/"+id);
+  }
+
+  async deleteReservation(id :string ,id_habitacion:string) {
+
+    return new Promise((resolve,reject)=>{
+
+     this.http.delete(this.apiUrl+"/db/reservas/"+id).subscribe((response)=>{
+
+      if(response){
+
+      this.http.patch(this.apiUrl+"/db/habitaciones/"+id_habitacion,{
+
+        updatefield:"reservada",
+        value:false,
+
+      }).subscribe(
+        (response)=>{
+          resolve(resolve)
+      },
+
+      (err)=>{
+        reject(err)
+      }
+      );
+      }else{
+        reject("error")
+      }
+     });
+
+
+
+    })
+
+
+  }
+
+  getusersbyid(id : string ): Observable<any> {
+    return this.http.get(this.apiUrl+"/db/user/"+id);
+  }
+  getreservasbyid(id:string){
+    return this.http.get(this.apiUrl+"/db/reservas/"+id);
+  }
+
+  getreservas(){
+    return this.http.get(this.apiUrl+"/db/reservas");
+  }
+  //rutas normales
   getMyReserves(): Observable<any> {
 
     return this.http.get(this.apiUrl+"/user/getreservas");
 
   }
-  getreservas(){
-    return this.http.get(this.apiUrl+"/db/reservas");
-  }
+
+
+
   GetRooms(): Observable<any> {
     return this.http.get(this.apiUrl+"/user/gethabitaciones");
   }
