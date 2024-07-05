@@ -2,7 +2,7 @@ const express = require('express');
 require ('dotenv').config();
 const cors = require('cors')
 
-
+const path = require('path');
 const BD = require("../../database/config");
 const  expressListEndpoints = require('express-list-endpoints');
 
@@ -22,7 +22,6 @@ class Server {
         this.dbconnection()
 
         this.middelwares();
-
 
         this.routes();
     }
@@ -65,12 +64,15 @@ class Server {
 
       this.app.use(this.userroutes,require("../routes/UserRoutes")(this.database))
 
-      this.app.get('/', (req, res) => {
-        res.send(expressListEndpoints(this.app))
-      });
+
+
+      this.app.use(express.static(path.join(__dirname, "../dist/web")));
+
+
       this.app.get('*', (req, res) => {
-        res.json("estas inflanda")
+      res.sendFile(path.join(__dirname, "../dist/web/index.html"));
       });
+
         
     }
 }
