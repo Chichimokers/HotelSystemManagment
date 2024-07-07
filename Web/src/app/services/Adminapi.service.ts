@@ -7,7 +7,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class AdminApi  implements OnInit{
 
-  private apiUrl = 'http://localhost:8080'; // Reemplaza YOUR_API_KEY con tu clave de API real
+  private apiUrl = 'https://deployhotel.onrender.com'; // Reemplaza YOUR_API_KEY con tu clave de API real
   private headers = new HttpHeaders()
   .set('Authorizathion', String(localStorage.getItem("token"))) // Header por defecto para JSON;
 

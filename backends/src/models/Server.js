@@ -34,7 +34,7 @@ class Server {
         //Para parsear un json easy
    
      this.app.use(cors({
-        origin: 'http://localhost:4200', // Replace with your Angular app's URL
+        origin: 'https://deployhotel.onrender.com', // Replace with your Angular app's URL
         methods: 'GET, POST, PUT, DELETE, OPTIONS,PATCH',
  
       }));
